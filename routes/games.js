@@ -1,49 +1,40 @@
-const gamesRouter = require('express').Router();
+const gamesRouter = require("express").Router();
+
 const {
-  createGame,
   findAllGames,
+  checkIsGameExists,
+  checkIfCategoriesAvaliable,
   findGameById,
+  createGame,
+  checkIfUsersAreSafe,
   updateGame,
   deleteGame,
   checkEmptyFields,
-  checkIfCategoriesAvaliable,
-  checkIfUsersAreSafe,
-  checkIsGameExists,
-  checkIsVoteRequest
-} = require('../middlewares/games');
+} = require("../middlewares/games.js");
 const {
-  sendGameCreated,
   sendAllGames,
-  sendGameUpdated,
   sendGameById,
-  sendGameDeleted
-} = require('../controllers/games');
-const { checkAuth } = require('../middlewares/auth');
+  sendGameCreated,
+  sendGameUpdated,
+  sendGameDeleted,
+} = require("../controllers/games.js");
+const { checkAuth } = require("../middlewares/auth.js");
 
-gamesRouter.get(
-  '/games',
-  findAllGames,
-  sendAllGames
-);
+gamesRouter.get("/games", findAllGames, sendAllGames);
 gamesRouter.post(
   "/games",
   findAllGames,
   checkIsGameExists,
   checkIfCategoriesAvaliable,
   checkEmptyFields,
-  // checkAuth,
+  checkAuth,
   createGame,
   sendGameCreated
 );
-gamesRouter.get(
-  "/games/:id",
-  findGameById,
-  sendGameById
-);
+gamesRouter.get("/games/:id", findGameById, sendGameById);
 gamesRouter.put(
   "/games/:id",
   findGameById,
-  checkIsVoteRequest,
   checkIfUsersAreSafe,
   checkIfCategoriesAvaliable,
   checkEmptyFields,
@@ -51,11 +42,6 @@ gamesRouter.put(
   updateGame,
   sendGameUpdated
 );
-gamesRouter.delete(
-  "/games/:id",
-  checkAuth,
-  deleteGame,
-  sendGameDeleted
-);
+gamesRouter.delete("/games/:id", checkAuth, deleteGame, sendGameDeleted);
 
 module.exports = gamesRouter;

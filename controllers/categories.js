@@ -1,21 +1,21 @@
 const sendAllCategories = (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.categoriesArray));
 };
 
-const sendCategoryCreated = (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
+const sendCategoryById = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.category));
 };
 
-const sendCategoryById = (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
+const sendCategoryCreated = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.category));
 };
 
 const sendCategoryUpdated = (req, res) => {
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(req.category));
+  res.end("Category updated");
 };
 
 const sendCategoryDeleted = (req, res) => {
@@ -25,8 +25,8 @@ const sendCategoryDeleted = (req, res) => {
 
 module.exports = {
   sendAllCategories,
-  sendCategoryCreated,
   sendCategoryById,
+  sendCategoryCreated,
   sendCategoryUpdated,
   sendCategoryDeleted
 };
