@@ -1,7 +1,7 @@
 const allowedCors = ["pindie-frontend-puatok.nomorepartiesco.ru"];
 
 // Вместо нашего адреса вставь свой
-// Можно ещё не удалять адреса с localhost, но мы удалили для краткостиgit pull
+// Можно ещё не удалять адреса с localhost, но мы удалили для краткости
 
 
 function cors(req, res, next) {
